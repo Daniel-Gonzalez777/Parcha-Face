@@ -1,0 +1,61 @@
+<footer class="border-t border-border bg-background-secondary mt-20">
+  <div class="container mx-auto px-4 py-4">
+    <!-- Contenido principal del footer en una sola línea -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- Logo y descripción -->
+      <div class="flex items-center gap-3">
+        <img src="assets/images/parchaface-logo.png" alt="ParchaFace Logo" width="28" height="28" class="rounded-lg" />
+        <div>
+          <span class="text-sm font-bold text-primary">ParchaFace</span>
+          <p class="text-foreground-secondary text-xs">Conectando personas</p>
+        </div>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="flex items-center gap-4">
+        <a routerLink="/eventos" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Eventos</a>
+        <a routerLink="/crear-evento" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Crear</a>
+        <a routerLink="/comunidad" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Comunidad</a>
+        <a routerLink="/perfil" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Perfil</a>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="flex gap-2">
+        <a href="#" class="w-7 h-7 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-colors">
+          <span class="text-primary text-xs">📘</span>
+        </a>
+        <a href="#" class="w-7 h-7 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-colors">
+          <span class="text-primary text-xs">📷</span>
+        </a>
+        <a href="#" class="w-7 h-7 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-colors">
+          <span class="text-primary text-xs">🐦</span>
+        </a>
+      </div>
+
+      <!-- Newsletter compacto -->
+      <div class="flex items-center gap-2">
+        <input type="email" placeholder="tu@email.com" 
+               class="w-32 px-2 py-1 border border-border rounded bg-white text-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent text-xs">
+        <button class="bg-primary text-white hover:bg-primary-600 px-3 py-1 rounded font-medium transition-all duration-300 text-xs">
+          Suscribirse
+        </button>
+      </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="border-t border-border mt-3 pt-3">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-2">
+        <p class="text-foreground-secondary text-xs text-center md:text-left">
+          © 2024 ParchaFace. Hecho con ❤️ en Colombia 🇨🇴
+        </p>
+        <div class="flex items-center gap-2">
+          <a href="#" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Ayuda</a>
+          <span class="text-foreground-secondary text-xs">•</span>
+          <a href="#" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Contacto</a>
+          <span class="text-foreground-secondary text-xs">•</span>
+          <a href="#" class="text-foreground-secondary hover:text-primary transition-colors text-xs">Términos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

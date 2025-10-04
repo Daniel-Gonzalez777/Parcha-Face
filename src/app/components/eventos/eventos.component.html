@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-background">
+  <div class="container mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-foreground mb-3">Eventos</h1>
+      <p class="text-xl text-foreground-secondary">Descubre eventos increíbles cerca de ti</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="mb-8 bg-background-tertiary rounded-xl p-6 border border-border shadow-sm">
+      <h3 class="text-lg font-bold text-foreground mb-4">Filtros de búsqueda</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-foreground mb-2">Categoría</label>
+          <select class="w-full px-3 py-2 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            <option value="">Todas</option>
+            <option value="musica">Música</option>
+            <option value="gaming">Gaming</option>
+            <option value="social">Social</option>
+            <option value="deportes">Deportes</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-foreground mb-2">Ubicación</label>
+          <select class="w-full px-3 py-2 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            <option value="">Cualquier lugar</option>
+            <option value="bogota">Bogotá</option>
+            <option value="medellin">Medellín</option>
+            <option value="cali">Cali</option>
+            <option value="barranquilla">Barranquilla</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-foreground mb-2">Fecha</label>
+          <input type="date" class="w-full px-3 py-2 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de eventos -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let evento of eventos" class="bg-background-tertiary rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <img [src]="evento.imagen" [alt]="evento.titulo" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full font-medium">
+              {{evento.categoria}}
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-foreground mb-2">{{evento.titulo}}</h3>
+          <p class="text-foreground-secondary text-sm mb-4 line-clamp-2">{{evento.descripcion}}</p>
+          <div class="flex items-center gap-4 text-sm text-foreground-secondary mb-4">
+            <div class="flex items-center gap-1">
+              <span class="text-primary">📅</span>
+              <span>{{evento.fecha}}</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="text-primary">📍</span>
+              <span>{{evento.ubicacion}}</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-lg font-bold text-primary">{{evento.precio}}</span>
+            <button class="bg-primary text-white hover:bg-primary-600 px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" [routerLink]="['/evento', evento.id]">
+              Ver Detalles
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

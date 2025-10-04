@@ -1,0 +1,384 @@
+<div class="min-h-screen bg-background">
+  <!-- Header con navegación -->
+  <div class="border-b border-border bg-background/95 sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a routerLink="/eventos" class="text-foreground hover:text-primary transition-colors font-medium">
+          ← Volver
+        </a>
+        <div class="flex items-center gap-3 ml-4">
+          <img src="assets/images/parchaface-logo.png" alt="ParchaFace Logo" width="40" height="40" class="rounded-lg" />
+          <h1 class="text-xl font-bold text-primary">ParchaFace</h1>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <button class="bg-background-secondary text-foreground hover:bg-background-tertiary px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2">
+          <span>📄</span>
+          Guardar Borrador
+        </button>
+        <button class="bg-background-secondary text-foreground hover:bg-background-tertiary px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2">
+          <span>👁️</span>
+          Vista Previa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Steps -->
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex items-center justify-center mb-12">
+      <div class="flex items-center space-x-8">
+        <!-- Paso 1 -->
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center mb-2"
+               [class]="isStepCompleted(1) ? 'bg-primary' : isStepActive(1) ? 'border-2 border-primary bg-white' : 'border-2 border-border bg-white'">
+            <span *ngIf="isStepCompleted(1)" class="text-white font-bold">✓</span>
+            <span *ngIf="isStepActive(1)" class="text-primary text-lg">📝</span>
+            <span *ngIf="!isStepCompleted(1) && !isStepActive(1)" class="text-foreground-muted text-lg">📝</span>
+          </div>
+          <span class="text-sm font-medium" [class]="isStepActive(1) ? 'text-foreground' : 'text-foreground-muted'">Paso 1</span>
+          <span class="text-xs text-foreground-secondary">Información Básica</span>
+        </div>
+        
+        <div class="w-16 h-0.5 bg-border"></div>
+        
+        <!-- Paso 2 -->
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-2"
+               [class]="isStepCompleted(2) ? 'bg-primary' : isStepActive(2) ? 'border-2 border-primary bg-white' : 'border-2 border-border bg-white'">
+            <span *ngIf="isStepCompleted(2)" class="text-white font-bold">✓</span>
+            <span *ngIf="isStepActive(2)" class="text-primary text-lg">📅</span>
+            <span *ngIf="!isStepCompleted(2) && !isStepActive(2)" class="text-foreground-muted text-lg">📅</span>
+          </div>
+          <span class="text-sm font-medium" [class]="isStepActive(2) ? 'text-foreground' : 'text-foreground-muted'">Paso 2</span>
+          <span class="text-xs text-foreground-secondary">Fecha y Lugar</span>
+        </div>
+        
+        <div class="w-16 h-0.5 bg-border"></div>
+        
+        <!-- Paso 3 -->
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center mb-2"
+               [class]="isStepCompleted(3) ? 'bg-primary' : isStepActive(3) ? 'border-2 border-primary bg-white' : 'border-2 border-border bg-white'">
+            <span *ngIf="isStepCompleted(3)" class="text-white font-bold">✓</span>
+            <span *ngIf="isStepActive(3)" class="text-primary text-lg">👤</span>
+            <span *ngIf="!isStepCompleted(3) && !isStepActive(3)" class="text-foreground-muted text-lg">👤</span>
+          </div>
+          <span class="text-sm font-medium" [class]="isStepActive(3) ? 'text-foreground' : 'text-foreground-muted'">Paso 3</span>
+          <span class="text-xs text-foreground-secondary">Detalles</span>
+        </div>
+        
+        <div class="w-16 h-0.5 bg-border"></div>
+        
+        <!-- Paso 4 -->
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center mb-2"
+               [class]="isStepCompleted(4) ? 'bg-primary' : isStepActive(4) ? 'border-2 border-primary bg-white' : 'border-2 border-border bg-white'">
+            <span *ngIf="isStepCompleted(4)" class="text-white font-bold">✓</span>
+            <span *ngIf="isStepActive(4)" class="text-primary text-lg">🌐</span>
+            <span *ngIf="!isStepCompleted(4) && !isStepActive(4)" class="text-foreground-muted text-lg">🌐</span>
+          </div>
+          <span class="text-sm font-medium" [class]="isStepActive(4) ? 'text-foreground' : 'text-foreground-muted'">Paso 4</span>
+          <span class="text-xs text-foreground-secondary">Configuración</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="max-w-2xl mx-auto">
+      <div class="bg-background-tertiary rounded-2xl p-8 shadow-lg border border-border">
+        <!-- Header del formulario dinámico -->
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white text-sm">{{ getStepIcon(currentStep) }}</span>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-foreground">{{ getStepTitle(currentStep) }}</h2>
+            <p class="text-sm text-foreground-secondary">Paso {{ currentStep }} de {{ totalSteps }} - {{ getStepSubtitle(currentStep) }}</p>
+          </div>
+        </div>
+
+        <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          
+          <!-- Paso 1: Información Básica -->
+          <div *ngIf="currentStep === 1" class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Título del Evento <span class="text-red-500">*</span>
+              </label>
+              <input type="text" formControlName="titulo" placeholder="Ej: Concierto de Rock Nacional"
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <div *ngIf="eventoForm.get('titulo')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                El título es requerido
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Categoría <span class="text-red-500">*</span>
+              </label>
+              <select formControlName="categoria" 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="">Selecciona una categoría</option>
+                <option value="musica">Música</option>
+                <option value="gaming">Gaming</option>
+                <option value="social">Social</option>
+                <option value="deportes">Deportes</option>
+                <option value="educativo">Educativo</option>
+                <option value="arte">Arte y Cultura</option>
+              </select>
+              <div *ngIf="eventoForm.get('categoria')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                La categoría es requerida
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Descripción <span class="text-red-500">*</span>
+              </label>
+              <textarea formControlName="descripcion" rows="4" placeholder="Describe tu evento..."
+                        class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+              <div *ngIf="eventoForm.get('descripcion')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                La descripción es requerida
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                URL de imagen
+              </label>
+              <input type="url" formControlName="imagen" placeholder="https://..."
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+
+          <!-- Paso 2: Fecha y Lugar -->
+          <div *ngIf="currentStep === 2" class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Fecha del Evento <span class="text-red-500">*</span>
+              </label>
+              <input type="date" formControlName="fecha" 
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <div *ngIf="eventoForm.get('fecha')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                La fecha es requerida
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-foreground mb-2">
+                  Hora de Inicio <span class="text-red-500">*</span>
+                </label>
+                <input type="time" formControlName="hora" 
+                       class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <div *ngIf="eventoForm.get('hora')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                  La hora es requerida
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-foreground mb-2">
+                  Hora de Finalización
+                </label>
+                <input type="time" formControlName="horaFin" 
+                       class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <input type="checkbox" formControlName="online" id="online" 
+                     class="w-4 h-4 text-primary border-border rounded focus:ring-primary">
+              <label for="online" class="text-sm font-medium text-foreground">Evento en línea</label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Nombre del Lugar <span class="text-red-500">*</span>
+              </label>
+              <input type="text" formControlName="lugar" placeholder="Ej: Centro de Convenciones"
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <div *ngIf="eventoForm.get('lugar')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                El lugar es requerido
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Dirección Completa <span class="text-red-500">*</span>
+              </label>
+              <input type="text" formControlName="direccion" placeholder="Calle, número, colonia"
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <div *ngIf="eventoForm.get('direccion')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                La dirección es requerida
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Ciudad <span class="text-red-500">*</span>
+              </label>
+              <select formControlName="ciudad" 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="">Selecciona una ciudad</option>
+                <option value="bogota">Bogotá</option>
+                <option value="medellin">Medellín</option>
+                <option value="cali">Cali</option>
+                <option value="barranquilla">Barranquilla</option>
+                <option value="cartagena">Cartagena</option>
+              </select>
+              <div *ngIf="eventoForm.get('ciudad')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                La ciudad es requerida
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 3: Detalles -->
+          <div *ngIf="currentStep === 3" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-foreground mb-2">
+                  Capacidad Máxima <span class="text-red-500">*</span>
+                </label>
+                <input type="number" formControlName="capacidad" placeholder="100"
+                       class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <div *ngIf="eventoForm.get('capacidad')?.hasError('required')" class="text-red-500 text-sm mt-1">
+                  La capacidad es requerida
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-foreground mb-2">
+                  Precio (COP)
+                </label>
+                <input type="number" formControlName="precio" placeholder="0 para evento gratis"
+                       class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Requisitos Especiales
+              </label>
+              <textarea formControlName="requisitos" rows="3" placeholder="Edad mínima, código de vestimenta, etc."
+                        class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-foreground mb-2">
+                Información de Contacto
+              </label>
+              <input type="text" formControlName="contacto" placeholder="Teléfono, email o WhatsApp"
+                     class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+
+          <!-- Paso 4: Configuración -->
+          <div *ngIf="currentStep === 4" class="space-y-8">
+            <!-- Configuración de Privacidad -->
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-4">Configuración de Privacidad</h3>
+              <div class="flex items-center justify-between p-4 bg-white rounded-lg border border-border">
+                <div>
+                  <p class="font-medium text-foreground">Evento público</p>
+                  <p class="text-sm text-foreground-secondary">Los eventos públicos aparecen en búsquedas y pueden ser vistos por cualquier usuario</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" formControlName="publico" class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Configuración de Interacción -->
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-4">Configuración de Interacción</h3>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 bg-white rounded-lg border border-border">
+                  <div>
+                    <p class="font-medium text-foreground">Permitir comentarios</p>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" formControlName="comentarios" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+                </div>
+                
+                <div class="flex items-center justify-between p-4 bg-white rounded-lg border border-border">
+                  <div>
+                    <p class="font-medium text-foreground">Enviar recordatorios automáticos</p>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" formControlName="recordatorios" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+        </div>
+                
+                <div class="flex items-center justify-between p-4 bg-white rounded-lg border border-border">
+                  <div>
+                    <p class="font-medium text-foreground">Recopilar feedback después del evento</p>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" formControlName="feedback" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resumen del Evento -->
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-4">Resumen del Evento</h3>
+              <div class="bg-white rounded-lg border border-border p-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="space-y-3">
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Título:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('titulo')?.value || 'Sin título' }}</p>
+                    </div>
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Categoría:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('categoria')?.value || 'Sin categoría' }}</p>
+                    </div>
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Fecha:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('fecha')?.value || 'Sin fecha' }}</p>
+                    </div>
+                  </div>
+                  <div class="space-y-3">
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Ubicación:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('lugar')?.value || 'Sin ubicación' }}</p>
+                    </div>
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Precio:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('precio')?.value > 0 ? '$' + eventoForm.get('precio')?.value : 'Gratis' }}</p>
+                    </div>
+                    <div>
+                      <span class="text-sm text-foreground-secondary">Capacidad:</span>
+                      <p class="font-medium text-primary">{{ eventoForm.get('capacidad')?.value || 'Ilimitada' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones de navegación -->
+          <div class="flex justify-between pt-6">
+            <button type="button" (click)="previousStep()"
+                    [disabled]="currentStep === 1"
+                    class="px-6 py-3 border border-border text-foreground hover:bg-background-secondary rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+              Anterior
+      </button>
+            <button type="submit" 
+                    class="px-8 py-3 bg-primary text-white hover:bg-primary-600 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+              <span *ngIf="currentStep === totalSteps">✈️</span>
+              <span *ngIf="currentStep < totalSteps">Siguiente</span>
+              <span *ngIf="currentStep === totalSteps">Crear Evento</span>
+      </button>
+    </div>
+  </form>
+      </div>
+    </div>
+  </div>
+</div>

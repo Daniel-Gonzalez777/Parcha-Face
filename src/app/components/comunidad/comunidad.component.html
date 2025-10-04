@@ -1,0 +1,140 @@
+<div class="min-h-screen bg-background">
+  <div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-foreground mb-3">Comunidad ParchaFace</h1>
+      <p class="text-xl text-foreground-secondary">Conecta con organizadores increíbles y descubre qué está pasando</p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="grid md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-background-tertiary rounded-xl p-6 text-center border border-border shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">25,430</div>
+        <div class="text-sm text-foreground-secondary">Usuarios Activos</div>
+      </div>
+      <div class="bg-background-tertiary rounded-xl p-6 text-center border border-border shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">1,250</div>
+        <div class="text-sm text-foreground-secondary">Eventos Totales</div>
+      </div>
+      <div class="bg-background-tertiary rounded-xl p-6 text-center border border-border shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">340</div>
+        <div class="text-sm text-foreground-secondary">Organizadores</div>
+      </div>
+      <div class="bg-background-tertiary rounded-xl p-6 text-center border border-border shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">89</div>
+        <div class="text-sm text-foreground-secondary">Este Mes</div>
+      </div>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="mb-8">
+      <div class="relative max-w-2xl mx-auto">
+        <input type="text" placeholder="Buscar organizadores, usuarios..." 
+               class="w-full px-4 py-3 pl-12 border border-border rounded-xl bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+        <span class="absolute left-4 top-3 text-foreground-muted">🔍</span>
+      </div>
+    </div>
+
+    <!-- Pestañas -->
+    <div class="mb-8">
+      <div class="flex space-x-1 bg-background-tertiary p-1 rounded-xl max-w-md mx-auto">
+        <button class="flex-1 py-3 px-4 text-sm font-medium rounded-lg text-foreground hover:bg-background-secondary transition-all duration-300">
+          Organizadores Populares
+        </button>
+        <button class="flex-1 py-3 px-4 text-sm font-medium rounded-lg bg-primary text-white transition-all duration-300">
+          Actividad Reciente
+        </button>
+      </div>
+    </div>
+
+    <!-- Feed de Actividad -->
+    <div class="max-w-4xl mx-auto space-y-4">
+      <!-- Actividad 1 -->
+      <div class="bg-background-tertiary rounded-xl p-6 border border-border shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+            <span class="text-primary text-lg">👥</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-foreground mb-1">
+              <span class="font-semibold">María González</span> creó un nuevo evento 
+              <span class="text-primary font-semibold">Workshop de Fotografía Digital</span>
+            </p>
+            <p class="text-foreground-secondary text-sm">hace 2 horas</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>❤️</span>
+              <span class="text-sm">12</span>
+            </button>
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>💬</span>
+              <span class="text-sm">3</span>
+            </button>
+            <button class="text-foreground-secondary hover:text-primary transition-colors">
+              <span>📤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actividad 2 -->
+      <div class="bg-background-tertiary rounded-xl p-6 border border-border shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+            <span class="text-primary text-lg">👥</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-foreground mb-1">
+              <span class="font-semibold">Carlos Ruiz</span> se inscribió al evento 
+              <span class="text-primary font-semibold">Festival de Música Electrónica 2024</span>
+            </p>
+            <p class="text-foreground-secondary text-sm">hace 4 horas</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>❤️</span>
+              <span class="text-sm">8</span>
+            </button>
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>💬</span>
+              <span class="text-sm">1</span>
+            </button>
+            <button class="text-foreground-secondary hover:text-primary transition-colors">
+              <span>📤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actividad 3 -->
+      <div class="bg-background-tertiary rounded-xl p-6 border border-border shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+            <span class="text-primary text-lg">👥</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-foreground mb-1">
+              <span class="font-semibold">EventPro</span> finalizó exitosamente 
+              <span class="text-primary font-semibold">Concierto Acústico en el Parque</span>
+            </p>
+            <p class="text-foreground-secondary text-sm">hace 1 día</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>❤️</span>
+              <span class="text-sm">45</span>
+            </button>
+            <button class="flex items-center gap-1 text-foreground-secondary hover:text-primary transition-colors">
+              <span>💬</span>
+              <span class="text-sm">12</span>
+            </button>
+            <button class="text-foreground-secondary hover:text-primary transition-colors">
+              <span>📤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

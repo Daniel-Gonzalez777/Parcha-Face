@@ -1,0 +1,92 @@
+<div class="min-h-screen flex items-center justify-center bg-background py-8">
+  <div class="w-full max-w-md bg-white rounded-2xl p-8 shadow-xl border border-border">
+    <div class="text-center mb-8">
+      <img src="assets/images/parchaface-logo.png" alt="ParchaFace Logo" width="60" height="60" class="mx-auto mb-4 rounded-lg" />
+      <h1 class="text-3xl font-bold text-foreground">Crear Cuenta</h1>
+      <p class="text-foreground-secondary mt-2">Únete a la comunidad de ParchaFace</p>
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-foreground mb-2">Nombre completo</label>
+        <input type="text" formControlName="fullName" placeholder="Tu nombre completo"
+               class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+        <div *ngIf="signupForm.get('fullName')?.hasError('required')" class="text-red-500 text-sm mt-1">
+          El nombre es requerido
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-foreground mb-2">Correo electrónico</label>
+        <input type="email" formControlName="email" placeholder="tu@email.com"
+               class="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+        <div *ngIf="signupForm.get('email')?.hasError('required')" class="text-red-500 text-sm mt-1">
+          El correo es requerido
+        </div>
+        <div *ngIf="signupForm.get('email')?.hasError('email')" class="text-red-500 text-sm mt-1">
+          Formato de correo inválido
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-foreground mb-2">Contraseña</label>
+        <div class="relative">
+          <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Mínimo 6 caracteres"
+                 class="w-full px-4 py-3 pr-12 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+          <button type="button" (click)="hidePassword = !hidePassword" 
+                  class="absolute right-3 top-3 text-foreground-muted hover:text-foreground">
+            {{hidePassword ? '👁️' : '🙈'}}
+          </button>
+        </div>
+        <div *ngIf="signupForm.get('password')?.hasError('required')" class="text-red-500 text-sm mt-1">
+          La contraseña es requerida
+        </div>
+        <div *ngIf="signupForm.get('password')?.hasError('minlength')" class="text-red-500 text-sm mt-1">
+          Mínimo 6 caracteres
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-foreground mb-2">Confirmar contraseña</label>
+        <div class="relative">
+          <input [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" placeholder="Repite tu contraseña"
+                 class="w-full px-4 py-3 pr-12 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+          <button type="button" (click)="hideConfirmPassword = !hideConfirmPassword" 
+                  class="absolute right-3 top-3 text-foreground-muted hover:text-foreground">
+            {{hideConfirmPassword ? '👁️' : '🙈'}}
+          </button>
+        </div>
+        <div *ngIf="signupForm.get('confirmPassword')?.hasError('required')" class="text-red-500 text-sm mt-1">
+          Confirmar contraseña es requerido
+        </div>
+        <div *ngIf="signupForm.hasError('passwordMismatch')" class="text-red-500 text-sm mt-1">
+          Las contraseñas no coinciden
+        </div>
+      </div>
+
+      <div class="flex items-center">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" formControlName="terms" class="w-4 h-4 text-primary border-border rounded focus:ring-primary">
+          <span class="text-sm text-foreground">Acepto los términos y condiciones</span>
+        </label>
+      </div>
+      <div *ngIf="signupForm.get('terms')?.hasError('required')" class="text-red-500 text-sm">
+        Debes aceptar los términos y condiciones
+      </div>
+
+      <button type="submit" 
+              class="w-full bg-primary text-white hover:bg-primary-600 py-3 px-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              [disabled]="signupForm.invalid || isLoading">
+        <span *ngIf="isLoading">Cargando...</span>
+        <span *ngIf="!isLoading">Crear Cuenta</span>
+      </button>
+
+      <div class="text-center">
+        <p class="text-foreground-secondary">
+          ¿Ya tienes cuenta? 
+          <a routerLink="/login" class="text-primary hover:underline font-medium">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

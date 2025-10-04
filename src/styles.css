@@ -1,0 +1,231 @@
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f9f6f0 100%);
+  color: #333333;
+  min-height: 100vh;
+}
+
+/* Custom Utility Classes */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Material Design overrides con colores de ParchaFace */
+.mat-mdc-button.mat-primary {
+  background-color: #eab308 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-button.mat-primary:hover {
+  background-color: #ca8a04 !important;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: #eab308 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  background-color: #ca8a04 !important;
+  box-shadow: 0 6px 16px rgba(234, 179, 8, 0.4) !important;
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  border-color: #a855f7 !important;
+  color: #a855f7 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-outlined-button.mat-primary:hover {
+  background-color: #a855f7 !important;
+  color: white !important;
+}
+
+/* Estilos para botones secundarios */
+.mat-mdc-button:not(.mat-primary) {
+  background-color: #fde047 !important;
+  color: #333333 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-button:not(.mat-primary):hover {
+  background-color: #facc15 !important;
+}
+
+/* Estilos para cards */
+.mat-mdc-card {
+  background-color: #f9f6f0 !important;
+  border: 1px solid #e5e0d6 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Estilos para form fields */
+.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background-color: white !important;
+  border-radius: 8px !important;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+/* Estilos adicionales para ParchaFace */
+.gradient-bg {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f9f6f0 100%);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para inputs personalizados */
+.custom-input {
+  background-color: white;
+  border: 1px solid #e5e0d6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #eab308;
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
+}
+
+/* Estilos para botones personalizados */
+.btn-primary {
+  background-color: #eab308;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #ca8a04;
+  box-shadow: 0 6px 16px rgba(234, 179, 8, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #a855f7;
+  border: 2px solid #a855f7;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #a855f7;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estilos para el logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #a855f7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #eab308;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #eab308;
+}

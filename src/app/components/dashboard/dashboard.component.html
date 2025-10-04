@@ -1,0 +1,92 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-primary mb-2">Dashboard</h1>
+    <p class="text-muted-foreground">Bienvenido a tu panel de control de ParchaFace</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <mat-card class="p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-semibold text-primary">Mis Eventos</h3>
+          <p class="text-2xl font-bold text-foreground">12</p>
+        </div>
+        <mat-icon class="text-primary text-3xl">event</mat-icon>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-semibold text-secondary">Asistentes</h3>
+          <p class="text-2xl font-bold text-foreground">248</p>
+        </div>
+        <mat-icon class="text-secondary text-3xl">people</mat-icon>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-semibold text-accent">Eventos Asistidos</h3>
+          <p class="text-2xl font-bold text-foreground">8</p>
+        </div>
+        <mat-icon class="text-accent text-3xl">check_circle</mat-icon>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-8">
+    <mat-card class="p-6">
+      <h2 class="text-xl font-semibold mb-4">Próximos Eventos</h2>
+      <div class="space-y-4">
+        <div class="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+            <mat-icon class="text-primary">music_note</mat-icon>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-semibold">Concierto de Rock</h3>
+            <p class="text-sm text-muted-foreground">15 de Diciembre, 2024</p>
+          </div>
+          <button mat-button color="primary">Ver</button>
+        </div>
+        
+        <div class="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
+          <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center">
+            <mat-icon class="text-secondary">sports_esports</mat-icon>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-semibold">Torneo Gaming</h3>
+            <p class="text-sm text-muted-foreground">20 de Diciembre, 2024</p>
+          </div>
+          <button mat-button color="primary">Ver</button>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-6">
+      <h2 class="text-xl font-semibold mb-4">Actividad Reciente</h2>
+      <div class="space-y-4">
+        <div class="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
+          <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+            <mat-icon class="text-white text-sm">check</mat-icon>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm">Te uniste al evento "Fiesta de Año Nuevo"</p>
+            <p class="text-xs text-muted-foreground">Hace 2 horas</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
+          <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+            <mat-icon class="text-white text-sm">add</mat-icon>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm">Creaste el evento "Workshop de Cocina"</p>
+            <p class="text-xs text-muted-foreground">Hace 1 día</p>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
